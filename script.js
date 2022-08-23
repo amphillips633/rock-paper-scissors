@@ -20,34 +20,81 @@ let playerSelection = prompt("Please enter rock, paper, or scissors");
 playerSelection = playerSelection.toLowerCase();
 let computerSelection = getComputerChoice();
 
-let playerWin = `You win! ${playerSelection} beats ${computerSelection}`;
-let computerWin = `You lose! ${computerSelection} beats ${playerSelection}`;
-let tie = `It's a tie! You both selected ${computerSelection}`;
+let playerWinRound = `You win! ${playerSelection} beats ${computerSelection}`;
+let computerWinRound = `You lose! ${computerSelection} beats ${playerSelection}`;
+let tieRound = `It's a tie! You both selected ${computerSelection}`;
+
+let playerWinGame = `Congratulation, you win!`;
+let computerWinGame = `Sorry, you lose.`;
 
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        return tie;
+        return tieRound;
     } else if ( 
         (playerSelection === "rock" && computerSelection === "scissors") ||
         (playerSelection === "paper" && computerSelection === "rock") ||
         (playerSelection === "scissors" && computerSelection === "paper")
     )  {
-        return playerWin;
+        return playerWinRound;
     } else if (
         (playerSelection === "rock" && computerSelection === "paper") ||
         (playerSelection === "paper" && computerSelection === "scissors") ||
         (playerSelection === "scissors" && computerSelection === "rock")
     )  {
-        return computerWin;
+        return computerWinRound;
     }
 }
 
+
+// //plays a round of the game until either playScore or computerScore = 5
+// function game() {
+//     if (playerScore < 5 && computerScore < 5) {
+//         playLoop();
+//     }
+// }
+
+
+ 
+// function winCondition() {
+//     let playerScore;
+//     let computerScore;
+
+//     } else if (computerScore === 5) {
+//         return computerWinGame;
+//     } else if (playerScore === 5) {
+//         return playerWinGame;
+//     }
+
+
 function game() {
-    {
+    for (let playerScore = 0, computerScore = 0; playerScore < 5 && computerScore < 5; scoreIncrement()) {
+        playRound();
+
+        // if (playerWinRound) {
+        //     playerScore ++;
+        //     console.log(`Player: ${playerScore}
+        //     Computer ${computerScore}`);
+        // } else if (computerWinRound) {
+        //     computerScore++;
+        //     console.log(`Player: ${playerScore}
+        //     Computer ${computerScore}`);
+        // }
+
+        function scoreIncrement() {
+            if (playerWinRound) {
+                playerScore++;
+            } else if (computerWinRound) {
+                computerScore++;
+            }
+        }
         
     }
 }
 
+console.log(game());
 
-console.log(playRound(playerSelection, computerSelection))
+
+//increments playerScore or computerScore depending on who won round
+
+// console.log(playRound(playerSelection, computerSelection))
